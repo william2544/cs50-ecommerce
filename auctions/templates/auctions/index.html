@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <h2>Active Listings</h2>
+    {% for item in listing %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{item.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                <p class="card-text">Price: ${{item.starting_bid}}</p>
+
+                <a href="{% url 'detailed' item=item.id %}" class="btn btn-primary">More Information</a>
+            </div>
+        </div>
+    {% empty %}
+        {{empty}} 
+    {% endfor %}
+{% endblock %}

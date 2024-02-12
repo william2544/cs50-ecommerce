@@ -1,0 +1,14 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+    <form action="{% url 'placebid' item=item.id %}" method="post">
+        {% csrf_token %}
+            <div>
+                <label for="bid">Place your bid amount:</label>
+                <input type="number" name="bidamount" class="btn-primary">
+            </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+{% endblock %}
